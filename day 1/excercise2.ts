@@ -33,15 +33,17 @@ console.log(msg);
 let webSeriesReport = new WebSeriesReport(msg);
 
 var indices = webSeriesReport.GetCharacterInfo("a");
-console.log('\nNumber of a : '+ indices.length + ' at below indices:');
+console.log(`\nNumber of as : +${indices.length} at below indices:`);
 console.log(indices.join());
 
 var statements = webSeriesReport.GetStatements();
-console.log('\nNumber of statements : ' + (statements.length - 1)) ;
+console.log(`\nNumber of statements : ${statements.length -1 }`);
 
 console.log("\nAfter formatting text (making 1st letter capital of every statement):");
 statements.forEach(function(statement:string, index:number){
     statement = statement.trim();    
     if(statement.length > 0)
-        console.log(index +': ' + statement.charAt(0).toUpperCase() + statement.slice(1));
+        console.log(`${index} : ${statement.charAt(0).toUpperCase()}${statement.slice(1)}`);
 })
+
+
