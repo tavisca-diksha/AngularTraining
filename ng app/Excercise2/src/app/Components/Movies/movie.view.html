@@ -1,0 +1,51 @@
+<div class="container">
+    <form name="moviefrm">
+        <div class="form-group">
+            <label>Movie Id</label>
+            <input type="text" class="form-control" name="MovieId" [(ngModel)] = "movie.Id">
+        </div>
+        <div class="form-group">
+            <label>Movie Name</label>
+            <input type="text" class="form-control" name="MovieName" [(ngModel)] = "movie.Name">
+        </div>
+        <div class="form-group">
+            <label>Release Year</label>
+            <input type="text" class="form-control" name="MovieId" [(ngModel)] = "movie.ReleaseYear">
+        </div>
+        <div class="form-group">
+            <label>Category</label>
+            <select name="category" class="form-control" [(ngModel)] = "movie.Category">
+                <option *ngFor="let item of categories" value={{item}}>{{item}}</option>
+            </select>
+        </div>
+
+        <input type="button" value="New" class="btn btn-warning" (click)="clear()">
+        <input type="button" value="Save" class="btn btn-success"  (click)="save()">
+    </form>
+</div>
+<br/><br/>
+<div class="container">
+    <input type="text" name="searchText" [(ngModel)]="searchText">
+    <input type="button" value="Search" class="btn btn-success" (click)="searchMovie()">
+    <br/><br/>
+    <form action="">
+        <label>sort (A-Z)</label><input type="radio" name="sortOrder" (click)="sort()">
+        <p></p>
+        <label>sort (Z-A)</label><input type="radio" name="sortOrder" (click)="reverseSort()">
+    </form>
+    <table class="table table-striped table-bordered table-dark">
+        <thead>
+            <tr>
+                <th *ngFor="let header of headers">{{header}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let movie of movies" (click)="getSelectedMovie(movie)">
+                <td *ngFor="let h of headers">
+                    {{movie[h]}}
+                </td>
+                <td><input type="button" class="btn btn-failure" (click)="delete(movie)">Delete</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
