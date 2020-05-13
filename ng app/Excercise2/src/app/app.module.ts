@@ -1,19 +1,21 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MovieComponent } from './Components/Movies/app.movie.component';
+import { MovieReactiveFormComponent } from './Components/MoviesReactive/app.moviereactiveform.component';
+import { TableDirectiveComponent } from './Directives/table.component.directive';
 
 @NgModule({
   declarations: [
-    AppComponent, MovieComponent
+    AppComponent, MovieComponent, MovieReactiveFormComponent, TableDirectiveComponent
   ],
   imports: [
-    BrowserModule, FormsModule,
+    BrowserModule, FormsModule, ReactiveFormsModule,
     AppRoutingModule
   ],
   providers: [],
-  bootstrap: [MovieComponent]
+  bootstrap: [MovieReactiveFormComponent]
 })
 export class AppModule { }

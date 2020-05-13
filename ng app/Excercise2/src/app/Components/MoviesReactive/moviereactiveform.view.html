@@ -1,0 +1,41 @@
+<div class="container">
+    <form name="moviefrm" [formGroup]="frmMovie" (ngSubmit)="save()">
+        <div class="form-group">
+            <label>Movie Id</label>
+            <input type="text" class="form-control" formControlName="Id" name="MovieId" >
+            <!-- <div class="alert alert-danger" *ngIf="frmMovie.controls.Id.dirty && !frmMovie.controls.Id.valid">
+                <p *ngIf="frmMovie.controls.Id.errors.isNotUnique">Movie Id should be unique</p>
+            </div> -->
+        </div>
+        <div class="form-group">
+            <label>Movie Name</label>
+            <input type="text" class="form-control" formControlName="Name" name="MovieName" >
+        </div>
+        <div class="form-group">
+            <label>Release Year</label>
+            <input type="text" class="form-control" formControlName="ReleaseYear" name="MovieReleaseYear" >
+        </div>
+        <div class="form-group">
+            <label>Category</label>
+            <select name="category" class="form-control">
+                <option *ngFor="let item of categories" value={{item}}>{{item}}</option>
+            </select>
+        </div>
+
+        <input type="button" value="New" class="btn btn-warning" (click)="clear()">
+        <input type="submit" value="Save" class="btn btn-success" >
+    </form>
+</div>
+<br/><br/>
+<div class="container">
+    <input type="text" name="searchText" [(ngModel)]="searchText">
+    <input type="button" value="Search" class="btn btn-success" (click)="searchMovie()">
+    <br/><br/>
+    <form action="">
+        <label>sort (A-Z)</label><input type="radio" name="sortOrder" (click)="sort()">
+        <p></p>
+        <label>sort (Z-A)</label><input type="radio" name="sortOrder" (click)="reverseSort()">
+    </form>
+    <app-table-directive [DataSource]="movies" (onRowSelect)="getSelectedMovie($event)" (onRowDelete)="deleteRow($event)">        
+    </app-table-directive>
+</div>
