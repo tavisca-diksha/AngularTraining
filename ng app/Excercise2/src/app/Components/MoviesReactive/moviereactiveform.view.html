@@ -2,11 +2,15 @@
     <form name="moviefrm" [formGroup]="frmMovie" (ngSubmit)="save()">
         <div class="form-group">
             <label>Movie Id</label>
-            <input type="text" class="form-control" formControlName="Id" name="MovieId" >            
+            <input type="text" class="form-control" formControlName="Id" name="MovieId" >       
         </div>
         <div class="form-group">
             <label>Movie Name</label>
             <input type="text" class="form-control" formControlName="Name" name="MovieName" >
+            <div *ngIf="frmMovie.controls.Name.dirty && !frmMovie.controls.Name.valid" class="alert alert-danger">
+                <p *ngIf="frmMovie.controls.Name.errors.isWithSpecialChars">Name must not contain special characters</p>
+                <p *ngIf="frmMovie.controls.Name.errors.isNotFirstCharCapital">Name must start with capital letter</p>
+            </div> 
         </div>
         <div class="form-group">
             <label>Release Year</label>

@@ -3,6 +3,7 @@ import { Logic } from 'src/app/Models/app.logic';
 import { Categories } from 'src/app/Models/app.constants';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
+import { CustomValidator } from './app.custom.validator';
 
 @Component({
     selector: 'app-moviesreactive-component',
@@ -29,7 +30,9 @@ export class MovieReactiveFormComponent implements OnInit {
         this.isExistingMovie = false;
         this.frmMovie = new FormGroup({
            Id : new FormControl(this.movie.Id),
-           Name : new FormControl(this.movie.Name) ,
+           Name : new FormControl(this.movie.Name, Validators.compose([
+               CustomValidator.isWithSpecialChars, CustomValidator.isNotFirstCharCapital
+           ])) ,
            ReleaseYear : new FormControl(this.movie.ReleaseYear) ,
            Category : new FormControl(this.movie.Category) 
         });
