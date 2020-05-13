@@ -6,7 +6,8 @@
         </div>
         <div class="form-group">
             <label>Movie Name</label>
-            <input type="text" class="form-control" formControlName="Name" name="MovieName" >
+            <input type="text" class="form-control" formControlName="Name" name="MovieName" 
+            [ngClass]="getClasses(frmMovie.controls.Name.dirty && !frmMovie.controls.Name.valid)">
             <div *ngIf="frmMovie.controls.Name.dirty && !frmMovie.controls.Name.valid" class="alert alert-danger">
                 <p *ngIf="frmMovie.controls.Name.errors.isWithSpecialChars">Name must not contain special characters</p>
                 <p *ngIf="frmMovie.controls.Name.errors.isNotFirstCharCapital">Name must start with capital letter</p>

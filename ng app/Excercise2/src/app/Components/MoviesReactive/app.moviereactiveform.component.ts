@@ -38,6 +38,12 @@ export class MovieReactiveFormComponent implements OnInit {
         });
     }  
 
+    getClasses(value:boolean): any{
+        return {            
+            'border-danger': value,
+        };
+    }
+
     setCategory(cat : string) :void{
         this.frmMovie.controls["Category"].setValue(cat);
     }
