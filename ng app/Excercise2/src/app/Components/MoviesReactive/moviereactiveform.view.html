@@ -2,10 +2,7 @@
     <form name="moviefrm" [formGroup]="frmMovie" (ngSubmit)="save()">
         <div class="form-group">
             <label>Movie Id</label>
-            <input type="text" class="form-control" formControlName="Id" name="MovieId" >
-            <!-- <div class="alert alert-danger" *ngIf="frmMovie.controls.Id.dirty && !frmMovie.controls.Id.valid">
-                <p *ngIf="frmMovie.controls.Id.errors.isNotUnique">Movie Id should be unique</p>
-            </div> -->
+            <input type="text" class="form-control" formControlName="Id" name="MovieId" >            
         </div>
         <div class="form-group">
             <label>Movie Name</label>
@@ -36,6 +33,7 @@
         <p></p>
         <label>sort (Z-A)</label><input type="radio" name="sortOrder" (click)="reverseSort()">
     </form>
-    <app-table-directive [DataSource]="movies" (onRowSelect)="getSelectedMovie($event)" (onRowDelete)="deleteRow($event)">        
+    <app-table-directive [DataSource]="movies" (onRowSelect)="getSelectedMovie($event)"
+        (onRowDelete)="deleteRow($event)">
     </app-table-directive>
 </div>

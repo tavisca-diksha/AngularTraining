@@ -28,26 +28,12 @@ export class MovieReactiveFormComponent implements OnInit {
         this.selectedMovie = null;
         this.isExistingMovie = false;
         this.frmMovie = new FormGroup({
-           Id : new FormControl(this.movie.Id//, 
-            //Validators.compose([CustomValidator.isNotUnique(this.movies)])
-                ),
+           Id : new FormControl(this.movie.Id),
            Name : new FormControl(this.movie.Name) ,
            ReleaseYear : new FormControl(this.movie.ReleaseYear) ,
            Category : new FormControl(this.movie.Category) 
         });
-    }
-
-    // private static ValidateUniqueId(movies:Array<Movie>, current : number): IsNotUnique{
-    //     return(ctrl:AbstractControl) : any => {
-    //         // for(let movie in movies){            
-    //         //     if(movie.Id === current){
-    //         //         return {isnNotUnique:true};
-    //         //     }
-    //         // }
-    //         console.log(JSON.stringify(movies));
-    //         return null;
-    //     }
-    // }    
+    }  
 
     ngOnInit() : void{
         this.movies = this.logic.GetMovies();
@@ -72,7 +58,7 @@ export class MovieReactiveFormComponent implements OnInit {
     }
 
     getSelectedMovie(movie:Movie): void{
-        this.movie = Object.assign({}, movie);
+        this.frmMovie.setValue(movie);        
         this.isExistingMovie = true;
         this.selectedMovie = movie;
     }

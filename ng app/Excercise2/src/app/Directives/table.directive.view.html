@@ -11,7 +11,7 @@
                 <td *ngFor="let h of headers">
                     {{item[h]}}
                 </td>
-                <td><input type="button" class="btn" (click)="onRowDeleteEvent(item)" value="Delete" ></td>
+                <td><input type="button" class="btn btn-success" value="Delete" (click)="onRowDeleteEvent(item)"></td>  
             </tr>
         </tbody>
     </table>
