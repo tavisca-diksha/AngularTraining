@@ -14,9 +14,15 @@
         </div>
         <div class="form-group">
             <label>Category</label>
-            <select name="category" class="form-control">
-                <option *ngFor="let item of categories" value={{item}}>{{item}}</option>
-            </select>
+            <form>
+                <div *ngFor="let cat of categories">
+                    <label>{{cat}}</label>
+                    <input type="radio" value="{{cat}}" (click)="setCategory(cat)" 
+                    *ngIf="frmMovie.controls.Category.value === cat" checked="true">
+                    <input type="radio" value="{{cat}}" (click)="setCategory(cat)" 
+                    *ngIf="frmMovie.controls.Category.value != cat"><p></p>
+                </div>
+            </form>            
         </div>
 
         <input type="button" value="New" class="btn btn-warning" (click)="clear()">

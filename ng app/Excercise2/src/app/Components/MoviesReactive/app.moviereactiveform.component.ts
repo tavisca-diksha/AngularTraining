@@ -35,6 +35,10 @@ export class MovieReactiveFormComponent implements OnInit {
         });
     }  
 
+    setCategory(cat : string) :void{
+        this.frmMovie.controls["Category"].setValue(cat);
+    }
+
     ngOnInit() : void{
         this.movies = this.logic.GetMovies();
         for(let field in this.movie){
@@ -43,17 +47,17 @@ export class MovieReactiveFormComponent implements OnInit {
     }
 
     clear() : void{
-        this.movie =  new Movie(0, '', 0, '');
+        this.frmMovie.setValue(new Movie(0, '', 0, ''));
         this.isExistingMovie = false;
         this.selectedMovie = null;
     }
 
     save(): void{
         if(this.isExistingMovie){
-            this.movies = this.logic.UpdateMovie(this.selectedMovie, this.movie);           
+            this.movies = this.logic.UpdateMovie(this.selectedMovie, this.frmMovie.value);           
         }
         else{
-            this.movies = this.logic.SaveMovie(this.movie);
+            this.movies = this.logic.SaveMovie(this.frmMovie.value);
         }
     }
 
