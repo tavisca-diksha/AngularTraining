@@ -1,4 +1,5 @@
 import { AbstractControl } from '@angular/forms';
+import { Logic } from 'src/app/Models/app.logic';
 
 
 export class CustomValidator{
@@ -12,6 +13,13 @@ export class CustomValidator{
             return {isWithSpecialChars:true};
          }
          return null;
+    }
+
+    static isNotUnique(ctrl:AbstractControl):any{
+        let logic = new Logic();
+        if(logic.GetMovies().find((movie, index)=> movie.Id == ctrl.value) != null)
+            return{isNotUnique:true};
+        return null;
     }
 
     static isNotFirstCharCapital(ctrl:AbstractControl):any{

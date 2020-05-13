@@ -29,7 +29,9 @@ export class MovieReactiveFormComponent implements OnInit {
         this.selectedMovie = null;
         this.isExistingMovie = false;
         this.frmMovie = new FormGroup({
-           Id : new FormControl(this.movie.Id),
+           Id : new FormControl(this.movie.Id, Validators.compose([
+               CustomValidator.isNotUnique
+           ])),
            Name : new FormControl(this.movie.Name, Validators.compose([
                CustomValidator.isWithSpecialChars, CustomValidator.isNotFirstCharCapital
            ])) ,
