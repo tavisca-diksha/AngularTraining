@@ -35,7 +35,7 @@
         </div>
 
         <input type="button" value="New" class="btn btn-warning" (click)="clear()">
-        <input type="submit" value="Save" class="btn btn-success" >
+        <input type="submit" value="Save" [disabled]="!frmMovie.valid" class="btn btn-success" >
     </form>
 </div>
 <br/><br/>
