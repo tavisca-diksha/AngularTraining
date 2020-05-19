@@ -4,6 +4,7 @@ import { Categories } from 'src/app/Models/app.constants';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { CustomValidator } from './app.custom.validator';
+import { HttpService } from 'src/app/Services/app.http.service';
 
 @Component({
     selector: 'app-moviesreactive-component',
@@ -20,7 +21,7 @@ export class MovieReactiveFormComponent implements OnInit {
     selectedMovie: Movie;
     isExistingMovie : boolean;
     frmMovie : FormGroup;
-    constructor() {
+    constructor(private serv: HttpService) {
         this.movie = new Movie(0, '', 0, '');
         this.movies = new Array<Movie>();
         this.logic = new Logic();
@@ -51,7 +52,9 @@ export class MovieReactiveFormComponent implements OnInit {
     }
 
     ngOnInit() : void{
-        this.movies = this.logic.GetMovies();
+        this.serv.get().subscribe((data)=>{
+            this.movies = data
+        },(error)=> {console.log(JSON.stringify(error))});
         for(let field in this.movie){
             this.headers.push(field);
         }
@@ -65,10 +68,16 @@ export class MovieReactiveFormComponent implements OnInit {
 
     save(): void{
         if(this.isExistingMovie){
-            this.movies = this.logic.UpdateMovie(this.selectedMovie, this.frmMovie.value);           
+            this.serv.put(this.frmMovie.value.Id, this.frmMovie.value).subscribe((data)=>{
+                this.movies = data
+            });
+            //this.movies = this.logic.UpdateMovie(this.selectedMovie, this.frmMovie.value);           
         }
         else{
-            this.movies = this.logic.SaveMovie(this.frmMovie.value);
+            this.serv.post(this.frmMovie.value).subscribe((data)=>{
+                this.movies = data
+            });
+            //this.movies = this.logic.SaveMovie(this.frmMovie.value);
         }
     }
 
@@ -79,7 +88,9 @@ export class MovieReactiveFormComponent implements OnInit {
     }
 
     deleteRow(movie:Movie): void{
-        this.movies = this.logic.DeleteMovie(movie);
+        this.serv.delete(this.frmMovie.value.Id).subscribe((data)=>{
+            this.movies = data
+        });
         console.log(JSON.stringify(this.movies));
     }
 

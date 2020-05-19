@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { MovieComponent } from './Components/Movies/app.movie.component';
 import { MovieReactiveFormComponent } from './Components/MoviesReactive/app.moviereactiveform.component';
 import { TableDirectiveComponent } from './Directives/table.component.directive';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,7 @@ import { TableDirectiveComponent } from './Directives/table.component.directive'
   ],
   imports: [
     BrowserModule, FormsModule, ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule, HttpClientModule
   ],
   providers: [],
   bootstrap: [MovieReactiveFormComponent]
