@@ -8,11 +8,12 @@ import { MovieReactiveFormComponent } from './Components/MoviesReactive/app.movi
 import { TableDirectiveComponent } from './Directives/table.component.directive';
 import {HttpClientModule} from '@angular/common/http';
 import { ProductReactiveFormComponent } from './Components/ProductsReactiveComponent/app.productreactiveform.component';
+import { ColorDirective } from './Components/DirectiveComponents/app.testdirective.component';
 
 @NgModule({
   declarations: [
     AppComponent, MovieComponent, MovieReactiveFormComponent, TableDirectiveComponent,
-    ProductReactiveFormComponent
+    ProductReactiveFormComponent, ColorDirective
   ],
   imports: [
     BrowserModule, FormsModule, ReactiveFormsModule,

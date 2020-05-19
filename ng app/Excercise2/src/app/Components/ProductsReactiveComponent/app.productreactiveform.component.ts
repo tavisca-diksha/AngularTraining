@@ -1,7 +1,7 @@
 import { Movie } from 'src/app/Models/app.movie';
 import { Logic } from 'src/app/Models/app.logic';
 import { Categories } from 'src/app/Models/app.constants';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 
 import { HttpService } from 'src/app/Services/app.http.service';
@@ -21,12 +21,16 @@ export class ProductReactiveFormComponent implements OnInit {
     selectedPrd: Product;
     isExistingPrd : boolean;
     frmPrd : FormGroup;
+    
+    isUnique: string;
+    
     constructor(private serv: HttpService) {
         this.prd = new Product(0,'','','','','',0);
         this.prds = new Array<Product>();
         this.headers  =new Array<string>();
         this.searchText = "";
         this.selectedPrd = null;
+        this.isUnique = '';
         this.isExistingPrd = false;
         this.frmPrd = new FormGroup({
             ProductRowId : new FormControl(this.prd.ProductRowId),
