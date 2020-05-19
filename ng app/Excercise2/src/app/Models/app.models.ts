@@ -31,10 +31,15 @@ export class RegisterUser {
   
   export class Product {
     constructor(
-      public productRowId: number,
-      public productName: string,
-      public price
+      public ProductRowId: number,      
+      public ProductId : string,
+      public ProductName: string,
+      public Manufacturer : string,
+      public Description : string,
+      public CategoryName : string,
+      public BasePrice : number
     ) {}
+    
   }
   
   export class ResponseData {

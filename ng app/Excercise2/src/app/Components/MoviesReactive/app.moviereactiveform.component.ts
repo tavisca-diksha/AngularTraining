@@ -53,7 +53,7 @@ export class MovieReactiveFormComponent implements OnInit {
 
     ngOnInit() : void{
         this.serv.get().subscribe((data)=>{
-            this.movies = data
+            //this.movies = data
         },(error)=> {console.log(JSON.stringify(error))});
         for(let field in this.movie){
             this.headers.push(field);
@@ -69,13 +69,13 @@ export class MovieReactiveFormComponent implements OnInit {
     save(): void{
         if(this.isExistingMovie){
             this.serv.put(this.frmMovie.value.Id, this.frmMovie.value).subscribe((data)=>{
-                this.movies = data
+                //this.movies = data
             });
             //this.movies = this.logic.UpdateMovie(this.selectedMovie, this.frmMovie.value);           
         }
         else{
             this.serv.post(this.frmMovie.value).subscribe((data)=>{
-                this.movies = data
+                //this.movies = data
             });
             //this.movies = this.logic.SaveMovie(this.frmMovie.value);
         }
@@ -89,7 +89,7 @@ export class MovieReactiveFormComponent implements OnInit {
 
     deleteRow(movie:Movie): void{
         this.serv.delete(this.frmMovie.value.Id).subscribe((data)=>{
-            this.movies = data
+            //this.movies = data
         });
         console.log(JSON.stringify(this.movies));
     }

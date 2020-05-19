@@ -1,0 +1,46 @@
+<div class="container">
+    <form name="moviefrm" [formGroup]="frmPrd" (ngSubmit)="save()">
+        <div class="form-group">
+            <label>Product Row Id</label>
+            <input type="text" class="form-control" formControlName="ProductRowId" name="ProductRowId">            
+        </div>
+        <div class="form-group">
+            <label>Product Id</label>
+            <input type="text" class="form-control" formControlName="ProductId" name="ProductId">            
+        </div>
+        <div class="form-group">
+            <label>Product Name</label>
+            <input type="text" class="form-control" formControlName="ProductName" name="ProductName">            
+        </div>
+        <div class="form-group">
+            <label>Manufacturer</label>
+            <input type="text" class="form-control" formControlName="Manufacturer" name="Manufacturer" >
+        </div>
+        <div class="form-group">
+            <label>Description</label>
+            <input type="text" class="form-control" formControlName="Description" name="Description" >         
+        </div>
+        <div class="form-group">
+            <label>Category Name</label>
+            <input type="text" class="form-control" formControlName="CategoryName" name="CategoryName" >         
+        </div>
+        <div class="form-group">
+            <label>Base Price</label>
+            <input type="text" class="form-control" formControlName="BasePrice" name="BasePrice" >         
+        </div>
+
+        <input type="button" value="New" class="btn btn-warning" (click)="clear()">
+        <input type="submit" value="Save" class="btn btn-success" >
+    </form>
+</div>
+<br/><br/>
+<div class="container">    
+    <form action="">
+        <label>sort (A-Z)</label><input type="radio" name="sortOrder" (click)="sort()">
+        <p></p>
+        <label>sort (Z-A)</label><input type="radio" name="sortOrder" (click)="reverseSort()">
+    </form>
+    <app-table-directive [DataSource]="prds" (onRowSelect)="getSelectedPrd($event)"
+        (onRowDelete)="deleteRow($event)">
+    </app-table-directive>
+</div>

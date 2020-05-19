@@ -7,16 +7,18 @@ import { MovieComponent } from './Components/Movies/app.movie.component';
 import { MovieReactiveFormComponent } from './Components/MoviesReactive/app.moviereactiveform.component';
 import { TableDirectiveComponent } from './Directives/table.component.directive';
 import {HttpClientModule} from '@angular/common/http';
+import { ProductReactiveFormComponent } from './Components/ProductsReactiveComponent/app.productreactiveform.component';
 
 @NgModule({
   declarations: [
-    AppComponent, MovieComponent, MovieReactiveFormComponent, TableDirectiveComponent
+    AppComponent, MovieComponent, MovieReactiveFormComponent, TableDirectiveComponent,
+    ProductReactiveFormComponent
   ],
   imports: [
     BrowserModule, FormsModule, ReactiveFormsModule,
     AppRoutingModule, HttpClientModule
   ],
   providers: [],
-  bootstrap: [MovieReactiveFormComponent]
+  bootstrap: [ProductReactiveFormComponent]
 })
 export class AppModule { }
